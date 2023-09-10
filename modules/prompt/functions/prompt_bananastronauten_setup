@@ -1,0 +1,36 @@
+function prompt_bananastronauten_git {
+    if [[ $(pwd -P) == "/mnt/"* ]]
+    then
+        exit 0
+    fi
+    if [ "$(git rev-parse --show-toplevel 2> /dev/null)" = $HOME ]
+    then
+        exit 0
+    fi
+
+    git-info
+    print "${git_info[prompt]}"
+}
+
+function prompt_bananastronauten_setup {
+    prompt_opts=(cr percent sp subst)
+    local BOLD=$(echo "%{\e[1m%}")
+    local RESET=$(echo "%{\e[0m%}")
+
+    # Tell prezto we can manage this prompt
+    zstyle ':prezto:module:prompt' managed 'yes'
+
+    zstyle ':prezto:module:git:info' verbose 'yes'
+
+    zstyle ':prezto:module:git:info:branch' format '%b'
+    zstyle ':prezto:module:git:info:remote' format 'remote:%R'
+    zstyle ':prezto:module:git:info:dirty'  format ' %F{11}🤔%f'
+    zstyle ':prezto:module:git:info:ahead'  format ' %F{3}↑%f'
+    zstyle ':prezto:module:git:info:behind' format ' %F{1}↓%f'
+
+    zstyle ':prezto:module:git:info:keys' format 'prompt' '('$BOLD'%F{6}%b%f%D%B%A'$RESET') '
+
+    PROMPT=''$BOLD'%F{3}$(prompt-pwd)%f'$RESET' $(prompt_bananastronauten_git)'$BOLD'%(?:%F{2}:%F{1})>%f'$RESET' '
+}
+
+prompt_bananastronauten_setup "$@"
