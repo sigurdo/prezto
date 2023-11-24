@@ -30,7 +30,7 @@ function prompt_bananastronauten_setup {
 
     zstyle ':prezto:module:git:info:keys' format 'prompt' '('$BOLD'%F{6}%b%f%D%B%A'$RESET') '
 
-    PROMPT=''$BOLD'%F{3}$(prompt-pwd)%f'$RESET' $(prompt_bananastronauten_git)'$BOLD'%(?:%F{2}:%F{1})>%f'$RESET' '
+    PROMPT=''$BOLD'%F{3}$(prompt-pwd)%f'$RESET' $(prompt_bananastronauten_git)'$BOLD'%(?:%F{2}:%F{1}[%?] )>%f'$RESET' '
 }
 
 prompt_bananastronauten_setup "$@"
