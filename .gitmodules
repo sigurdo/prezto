@@ -32,3 +32,6 @@
 [submodule "modules/skim-zsh"]
 	path = modules/skim-zsh
 	url = https://github.com/hackerchai/skim-zsh.git
+[submodule "modules/zsh-vi-mode"]
+	path = modules/zsh-vi-mode
+	url = https://github.com/jeffreytse/zsh-vi-mode.git
